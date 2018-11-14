@@ -1,0 +1,19 @@
+
+.no-pad{
+	padding: 0;
+}
+.no-pad-xs{
+	padding: 0 ;
+}
+.pad-xs-only{
+	padding: 0 20px;
+}
+.btn:hover{
+	 border-radius: 15px;  color: #FFC32F; text-transform: uppercase;  background-color: #333;
+}
+.btn{
+	color: #FCFCFC; text-transform: uppercase;  background-color: #A30118; border-radius: 15px;  
+}
+input{
+	color: #333;
+}

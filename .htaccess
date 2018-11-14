@@ -1,0 +1,18 @@
+# Activation de la réécriture
+RewriteEngine On
+
+#[			URL 			]
+#[ 		domaine	  ][	URI 	]
+# http://localhost/mvccours
+
+
+RewriteBase /mvccours/
+
+RewriteCond %{DOCUMENT_ROOT}/mvccours/Public/$1 -f
+RewriteRule (.*) Public/$1 [L]
+
+#on test si la ressource n'existe pas
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Alors je redirige vers index.php
+RewriteRule (.*) App/index.php?url=$1&t=%{DOCUMENT_ROOT}/mvccours/Public/$1 [QSA,L]

@@ -62,6 +62,20 @@ Class Generique{
 		return  $stmt->execute() ? true : $stmt->errorInfo();
 	}
 
+	static function updateAttribute($data){
+		$db = Database::connect();
+		$stmt = $db->prepare(Database::updateAttribute(get_called_class(), $data));
+
+		foreach ($data as $key => $value) {
+			$stmt->bindValue(':'.$key, $value, gettype($value) === "boolean" ? PDO::PARAM_BOOL : PDO::PARAM_STR);
+
+		}
+
+		// var_dump($stmt);
+		// die;
+		return  $stmt->execute() ? true : $stmt->errorInfo();
+	}
+
 	static function delete($object){
 		$db = Database::connect();
 		$stmt = $db->prepare(Database::delete(get_called_class(), $object->id));

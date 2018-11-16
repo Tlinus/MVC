@@ -2,6 +2,8 @@
 
 namespace Controllers;
 use \Models\Utilisateur as modelUtilisateur;
+		use \Models\Projet as modelProjet;
+		use \Models\Tache as modelTache;
 
 class	Utilisateur extends Generique{
 	/**
@@ -60,6 +62,17 @@ class	Utilisateur extends Generique{
 	*@url=/utilisateur/delete
 	*/
 	public static function deleteUser(){
+
+
+		$Projets = modelProjet::find(['id_utilisateur'=>$_POST['id']]);
+		foreach ($Projets as $Projet) {
+			$Taches = modelTache::find(['id_projet'=>$Projet->id]);
+			foreach ($Taches as $Tache) {
+				modelTache::delete($Tache);
+			}
+			modelProjet::delete($Projet);
+		}
+		
 		modelUtilisateur::delete($_SESSION['user']);
 		\Core\Session::destroy();
 		self::redirect('register');

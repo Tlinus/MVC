@@ -5,9 +5,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-10 col-xs-offset-1 text-center" >
-					<h1 class="text-center">Bienvenue</h1>
-					<div class="row">
+					<h1 class="text-center" style="width:100%; margin: 50px;">Modifier vos informations</h1>
 						
 								<?php if(isset($_SESSION['error_modify'])){
 									?>
@@ -21,33 +19,33 @@
 									unset($_SESSION['error_modify']);
 								} ?>
 						
-						<form method="post" action="./utilisateur/modify" class='formulaire-inscription'>
-							<div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">				
+						<form method="post" action="./utilisateur/modify" style="width: 100%">
+							<div class="col-4 offset-4 text-center ">				
 								<h3>Login:</h3>
 								<input name="login" type="text" placeholder="Pseudo..."  
 									<?php echo  'value="'.$_SESSION['user']->login. '"'; ?> 
 								/>
 							</div>
-							<div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">				
+							<div class="col-4 offset-4 text-center ">				
 								<h3>Votre nom: </h3>
 								<input name="lastName" type="text" placeholder="Mon nom" required 
 										<?php echo  'value="'.$_SESSION['user']->lastName. '"';  ?> 
 								 />
 							</div>
-							<div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">				
+							<div class="col-4 offset-4 text-center ">				
 								<h3>Votre prénom: </h3>
 								<input name="firstName" type="text" placeholder="Mon nom" required 
 										<?php echo  'value="'.$_SESSION['user']->firstName. '"';  ?> 
 								 />
 							</div>
-							<div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">		
+							<div class="col-4 offset-4 text-center ">		
 								<h3>Mot de passe: </h3>
 								<input type="password" name="password" placeholder="Mot de passe..." required 
 									<?php echo  'value="'.$_SESSION['user']->password. '"';  ?> 
 								 />
 							</div>
-							<div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
-								<input id="inscription" type="submit" class="btn" value="Modifier"/> <br>
+							<div class="col-4 offset-4 text-center ">
+								<input id="inscription" style="margin: 25px;" type="submit" class="btn btn-primary" value="Modifier"/> <br>
 							</div>
 						</form>
 						<?php 
@@ -60,7 +58,6 @@
 						?>
 					</div>
 					<!-- au cas où il y aurait eu une mauvaise direction on propose au visiteur si il a déja un compte de s'authentifier... -->
-					<h4> déja inscrit? <a href="login" > Connexion</a> </h4>
 				</div>
 			</div>
 	}

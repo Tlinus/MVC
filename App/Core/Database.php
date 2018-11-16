@@ -77,6 +77,29 @@ class Database{
 
 	}
 
+	public static function updateAttribute($namespace, $data){
+		// Model\Utilisateur
+		$table = explode('\\', $namespace);
+		// [Model, Utilisateur]
+		$table = end($table);
+		//Utilisateur
+
+		$sql = "UPDATE `$table` SET ";
+
+		foreach ($data as $key => $value) {
+			if($key != 'id'){
+				$sql .= "`".$key."` = :".$key.", " ;
+			}
+		}
+		
+		$sql = trim($sql);
+		$sql = rtrim($sql, ',');
+		$sql .= " WHERE id = :id ;"; 
+
+		return $sql;
+
+	}
+
 	public static function delete($namespace, $id){
 		// Model\Utilisateur
 		$table = explode('\\', $namespace);
